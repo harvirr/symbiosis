@@ -1,15 +1,17 @@
-# Symbiosis Framework v0.9 — 20 November 2025
+# Symbiosis Framework v1.0 — 20 November 2025
 
-The engineering standard for safe, economic, and governable hybrid intelligence.
+**An Engineering Standard for Safe, Economic, and Governable Hybrid Intelligence**
 
-**Download** → [symbiosis-framework-v0.9-2025-11-20.pdf](https://github.com/harvirr/symbiosis/releases/download/v0.9/symbiosis-framework-v0.9-2025-11-20.pdf)
+Deterministic Proto-Standard · Normative Draft · Apache 2.0  
+Canonical repository of the Symbiosis standard.
 
-**Key Artifacts**  
-• Canonical Ontology → [diagrams/ontology.svg](diagrams/ontology.svg) *(coming hours)*  
-• Operational Trace → [diagrams/operational-trace.svg](diagrams/operational-trace.svg) *(coming hours)*  
-• Reference Implementation → [ref-impl/engine.py](ref-impl/engine.py) *(coming hours)*  
+**Download the full specification** → [symbiosis-framework-v1.0-2025-11-20.pdf](https://github.com/harvirr/symbiosis/releases/download/v1.0/symbiosis-framework-v1.0-2025-11-20.pdf)
 
-327 pages · 10-step normative engine · conformance tiers · contract schema v1  
-Apache 2.0 — fork, implement, certify.
+**Key Artifacts**
+- Canonical Ontology → [diagrams/canonical-ontology.mmd](diagrams/canonical-ontology.mmd) ([SVG](https://mermaid.ink/svg/...))  
+- Operational Trace → [diagrams/operational-trace.mmd](diagrams/operational-trace.mmd)  
+- Reference Implementation → [symbiosis_core/engine.py](symbiosis_core/engine.py) (fully runnable, real LLM calls, cost tracking, MCP contracts)
 
 This is the Kubernetes of human–AI coordination.
+
+v1.0 replaces v0.9 entirely. All future development is v1.x.
