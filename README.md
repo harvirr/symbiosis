@@ -5,7 +5,7 @@
 Deterministic Proto-Standard · Normative Draft · Apache 2.0  
 Canonical repository of the Symbiosis standard.
 
-**Download the full specification** → [symbiosis-framework-v1.0-2025-11-20.pdf](https://github.com/harvirr/symbiosis/releases/download/v1.0/symbiosis-framework-v1.0-2025-11-20.pdf)
+**Download the full specification** → [symbiosis-framework-v1.0-2025-11-20.pdf](https://github.com/user-attachments/files/23664424/symbiosis-framework-v1.0-2025-11-20.pdf)
 
 **Key Artifacts**
 - Canonical Ontology → [diagrams/canonical-ontology.mmd](diagrams/canonical-ontology.mmd) ([SVG](https://mermaid.ink/svg/...))  
