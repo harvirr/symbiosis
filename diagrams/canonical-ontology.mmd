@@ -1,5 +1,3 @@
-Corrected Canonical Ontology Diagram (2.8)
-
 flowchart TB
   %% =========================
   %% LAYER 1 — HUMAN (Blue)
@@ -67,45 +65,15 @@ flowchart TB
   C -->|"constraint injection"| TG
   C -->|"caps"| MCP
 
-  %% -------- Styling (Appendix L colors) --------
+  %% -------- Styling --------
   classDef blue fill:#dbeafe,stroke:#1e3a8a,stroke-width:1px,color:#0f172a;
   classDef green fill:#dcfce7,stroke:#166534,stroke-width:1px,color:#0f172a;
   classDef yellow fill:#fef9c3,stroke:#854d0e,stroke-width:1px,color:#0f172a;
   classDef red fill:#fee2e2,stroke:#991b1b,stroke-width:1px,color:#0f172a;
-  classDef spine fill:#f8fafc,stroke:#334155,stroke-dasharray: 4 3,color:#0f172a;
+  classDef spine fill:#f8fafc,stroke:#334155,stroke-dasharray:4 3,color:#0f172a;
 
   class H,AS,I blue
   class E,TG,AB,RB,EC green
   class MCP,A yellow
   class GK,C,P red
   class L spine
-
-Legend (canonical)
-
-Solid arrows (↓) = control path: intent → plans → actions. 
-
-Dotted arrows (↑) = telemetry path: actions/state → lineage/metrics → human + governance. 
-
-Red constraint arrows = constraint supremacy / injection from Governance into Engine, TG, and contracts. 
-
-Lineage spine (L) = immutable ancestry trace binding all layers. 
-
-
-Narrative walkthrough (Appendix-L style)
-
-1. Human primacy entry. Human intent is expressed through an Alignment Surface (AS) and normalized into a Structured Intent Object (I). 
-
-
-2. Constraint + budget consolidation. Governance Kernel and Policy Engine generate Constraint Vector C and pin it into the Engine; budgets B are mandatory inputs to EC. 
-
-
-3. RB/AB gating. The Engine computes RB per TG node and selects the admissible AB under GK rules. 
-
-
-4. Planning + contracting. E expands intent into TG, then binds MCP contracts (capabilities, AB ceiling, cost caps) before delegation to agents. 
-
-
-5. Execution with bounded capability. Agents execute TG nodes under contracts and constraints; they never originate goals or cross RB. 
-
-
-6. Telemetry + co-evolution. Agent outputs and realized costs flow upward to E; E commits lineage, updates SI/HSS/SCP, and may promote/demote AB.
