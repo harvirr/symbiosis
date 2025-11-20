@@ -1,0 +1,111 @@
+Corrected Canonical Ontology Diagram (2.8)
+
+flowchart TB
+  %% =========================
+  %% LAYER 1 — HUMAN (Blue)
+  %% =========================
+  subgraph L1["Layer 1 — Human Layer (Blue)"]
+    direction TB
+    H[Human Agent (H)\n• sovereign meaning/value origin\n• regret owner\n• traits: HSS, SCP]
+    AS[Alignment Surface (AS)\n• low ↔ high fidelity interfaces]
+    I[Structured Intent Object (I)\n• goal_statement\n• output_spec\n• regret_tolerance\n• constraint_seed C₀\n• budget_envelope B]
+  end
+
+  %% =========================
+  %% LAYER 2 — ENGINE (Green)
+  %% =========================
+  subgraph L2["Layer 2 — Symbiosis Engine (Green)"]
+    direction TB
+    E[Symbiosis Engine (E)\nDeterministic coordinator\nRouter • Planner • Econ Pass • Safety Supervisor]
+    TG[Task Graph (TG)\nTyped nodes + dependencies + checkpoints]
+    AB[Autonomy Band State (AB0–AB3)\nKernel-enforced autonomy ceiling]
+    RB[Regret Boundary (RB)\nReversibility threshold per node]
+    EC[Economic Circuit (EC)\nBudget admissibility gate]
+  end
+
+  %% =========================
+  %% LAYER 3 — AGENTIC (Yellow)
+  %% =========================
+  subgraph L3["Layer 3 — Agentic Layer (Yellow)"]
+    direction TB
+    MCP[MCP Contract(s)\nCapabilities • permissions • AB ceiling • cost caps]
+    A[Agent Cluster(s) (A)\nCapability modules\n(no goal authority)]
+  end
+
+  %% =========================
+  %% LAYER 4 — GOVERNANCE (Red)
+  %% =========================
+  subgraph L4["Layer 4 — Governance Layer (Red)"]
+    direction TB
+    GK[Governance Kernel (GK)\nRisk classes • RB/AB rules\nConstraint supremacy]
+    C[Constraint Vector (C)\n⟨C_legal, C_safety, C_econ⟩\nHard boundary]
+    P[Policy Engine / Boards\nSector overlays • audits • escalations]
+  end
+
+  %% =========================
+  %% CROSS-LAYER SPINE
+  %% =========================
+  L[Context Lineage (L)\nImmutable ancestry spine\nHashes + replayability]
+
+  %% -------- Control flow DOWN --------
+  H --> AS --> I
+  I --> E
+  E --> EC --> TG
+  E --> RB --> AB
+  E --> TG --> MCP --> A
+
+  %% -------- Telemetry flow UP --------
+  A -. "telemetry: outputs + cost + safety" .-> E
+  E -. "updates" .-> L
+  E -. "SI / HSS / SCP deltas" .-> H
+  E -. "audit + metrics" .-> P
+
+  %% -------- Constraint injection / supremacy --------
+  P --> GK
+  GK --> C
+  C -->|"constraint injection"| E
+  C -->|"constraint injection"| TG
+  C -->|"caps"| MCP
+
+  %% -------- Styling (Appendix L colors) --------
+  classDef blue fill:#dbeafe,stroke:#1e3a8a,stroke-width:1px,color:#0f172a;
+  classDef green fill:#dcfce7,stroke:#166534,stroke-width:1px,color:#0f172a;
+  classDef yellow fill:#fef9c3,stroke:#854d0e,stroke-width:1px,color:#0f172a;
+  classDef red fill:#fee2e2,stroke:#991b1b,stroke-width:1px,color:#0f172a;
+  classDef spine fill:#f8fafc,stroke:#334155,stroke-dasharray: 4 3,color:#0f172a;
+
+  class H,AS,I blue
+  class E,TG,AB,RB,EC green
+  class MCP,A yellow
+  class GK,C,P red
+  class L spine
+
+Legend (canonical)
+
+Solid arrows (↓) = control path: intent → plans → actions. 
+
+Dotted arrows (↑) = telemetry path: actions/state → lineage/metrics → human + governance. 
+
+Red constraint arrows = constraint supremacy / injection from Governance into Engine, TG, and contracts. 
+
+Lineage spine (L) = immutable ancestry trace binding all layers. 
+
+
+Narrative walkthrough (Appendix-L style)
+
+1. Human primacy entry. Human intent is expressed through an Alignment Surface (AS) and normalized into a Structured Intent Object (I). 
+
+
+2. Constraint + budget consolidation. Governance Kernel and Policy Engine generate Constraint Vector C and pin it into the Engine; budgets B are mandatory inputs to EC. 
+
+
+3. RB/AB gating. The Engine computes RB per TG node and selects the admissible AB under GK rules. 
+
+
+4. Planning + contracting. E expands intent into TG, then binds MCP contracts (capabilities, AB ceiling, cost caps) before delegation to agents. 
+
+
+5. Execution with bounded capability. Agents execute TG nodes under contracts and constraints; they never originate goals or cross RB. 
+
+
+6. Telemetry + co-evolution. Agent outputs and realized costs flow upward to E; E commits lineage, updates SI/HSS/SCP, and may promote/demote AB.
