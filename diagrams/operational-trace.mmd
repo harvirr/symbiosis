@@ -1,106 +1,72 @@
-Corrected One-Page Operational Trace (3.6)
-
 flowchart TB
-  %% Four horizontal bands (stack view)
-  subgraph H1["Layer 1 — Human (Blue)"]
+
+  %% Layer 1 - Human
+  subgraph H1["Layer 1 - Human (Blue)"]
     direction LR
-    H0[H defines Intent I₀\n+ seed constraints C₀\n+ budget B]
-    H1a[H approves Dry-Run preview\n(if AB2+/RB-prox)]
-    H2[H reviews RB checkpoints\nand final trace]
+    H0[Human defines Intent I0\n+ seed constraints C0\n+ budget B]
+    H1a[Human approves Dry Run preview\n(when AB2 or RB proximate)]
+    H2[Human reviews RB checkpoints\nand final trace]
   end
 
-  subgraph E1["Layer 2 — Engine (Green)"]
+  %% Layer 2 - Engine
+  subgraph E1["Layer 2 - Engine (Green)"]
     direction LR
-    E0[1. Intent Normalization\nI₀ → I′]
-    E1a[2. Constraint Assembly\nC₀ + GK → C]
-    E2[3. Planning\nI′ → TG]
-    E3[4. Economic Pass (EC)\nprice TG vs B]
-    E4[5. RB/AB Selection\ncompute RB, set AB]
-    E5[6. Dry-Run Preview\n(no side effects)]
-    E6[7. Dispatch + Bind\nTG → MCP]
-    E7[10. SI/HSS/SCP Update\nrolling health]
-    E8[11. Transparency Trace\nsurface to H]
+    E0[1. Intent Normalization\nI0 to I1]
+    E1a[2. Constraint Assembly\nC0 + GK to C]
+    E2[3. Planning\nI1 to TG]
+    E3[4. Economic Pass\nprice TG vs budget]
+    E4[5. RB and AB Selection\ncompute RB, set AB ceiling]
+    E5[6. Dry Run Preview\nno side effects]
+    E6[7. Dispatch and Bind\nTG to MCP contracts]
+    E7[10. Metric Update\nSI, HSS, SCP]
+    E8[11. Transparency Trace\nsurface to Human]
     E9[12. Lineage Commit\nhash to L]
   end
 
-  subgraph A1["Layer 3 — Agentic (Yellow)"]
+  %% Layer 3 - Agentic
+  subgraph A1["Layer 3 - Agentic (Yellow)"]
     direction LR
-    A0[8. Execute TG nodes\nunder MCP + AB ceiling]
-    A1a[9. Return telemetry\noutputs + cost + safety]
+    A0[8. Execute TG nodes\nunder MCP and AB ceiling]
+    A1a[9. Return telemetry\noutputs, cost, safety]
   end
 
-  subgraph G1["Layer 4 — Governance (Red)"]
+  %% Layer 4 - Governance
+  subgraph G1["Layer 4 - Governance (Red)"]
     direction LR
-    G0[Pre-flight Policy Load\nrisk class + RB/AB ceilings]
-    G1a[Incident / Violation Gate\nsafe-mode / AB demotion]
+    G0[Pre flight Policy Load\nrisk class + AB rules]
+    G1a[Violation Gate\nsafe mode or AB demotion]
     G2[Audit Review\nlineage evidence]
   end
 
+  %% Lineage
   L[(Context Lineage Spine L)]
 
-  %% Control flows DOWN
+  %% Control flows (downstream)
   H0 --> E0 --> E1a --> E2 --> E3 --> E4
-  E4 -->|"AB2+/RB-prox?"| E5 --> H1a --> E6 --> A0
+  E4 -->|AB2 or RB prox| E5 --> H1a --> E6 --> A0
   A0 --> A1a
 
-  %% Telemetry flows UP
+  %% Telemetry flows (upstream)
   A1a -. "telemetry" .-> E7
-  E7 -. "transparency" .-> E8 -. "to H" .-> H2
+  E7 -. "transparency" .-> E8 -. "to human" .-> H2
   E7 -. "audit package" .-> E9 -. "hash" .-> L
   L -. "evidence" .-> G2
 
-  %% Constraint injection / governance supremacy
+  %% Governance injection
   G0 --> E1a
   G0 --> E4
   G1a --> E4
   G1a --> E6
 
   %% Styling
-  classDef blue fill:#dbeafe,stroke:#1e3a8a,stroke-width:1px,color:#0f172a;
-  classDef green fill:#dcfce7,stroke:#166534,stroke-width:1px,color:#0f172a;
-  classDef yellow fill:#fef9c3,stroke:#854d0e,stroke-width:1px,color:#0f172a;
-  classDef red fill:#fee2e2,stroke:#991b1b,stroke-width:1px,color:#0f172a;
-  classDef spine fill:#f8fafc,stroke:#334155,stroke-dasharray: 4 3,color:#0f172a;
+  classDef blue fill:#dbeafe,stroke:#1e3a8a,color:#0f172a;
+  classDef green fill:#dcfce7,stroke:#166534,color:#0f172a;
+  classDef yellow fill:#fef9c3,stroke:#854d0e,color:#0f172a;
+  classDef red fill:#fee2e2,stroke:#991b1b,color:#0f172a;
+  classDef spine fill:#f8fafc,stroke:#334155,color:#0f172a,stroke-dasharray:4 3;
 
   class H0,H1a,H2 blue
   class E0,E1a,E2,E3,E4,E5,E6,E7,E8,E9 green
   class A0,A1a yellow
   class G0,G1a,G2 red
   class L spine
-
-Legend (canonical)
-
-Downward solid arrows = intent/control routing through Engine into agents. 
-
-Upward dotted arrows = telemetry, metrics, and evidence returning to human + governance. 
-
-Governance arrows into E = pre-flight constraint supremacy and runtime safe-mode/demotion gates. 
-
-
-Narrative walkthrough (Appendix-L style)
-
-1. Intent intake. H provides I₀, initial constraints C₀, and budget B. Intent is normalized to I′ (Engine is not allowed to originate goals). 
-
-
-2. Governed consolidation. GK compiles policy into C and sets risk class ceilings for AB/RB. Plans violating C are rejected pre-flight. 
-
-
-3. Task graph synthesis. E expands I′ into TG with dependencies and candidate bands. 
-
-
-4. Economic admissibility. EC prices TG vs B; over-budget plans are optimized or returned for override. 
-
-
-5. RB/AB gating. E computes RB per node and selects admissible AB state. Any RB crossing requires human authorization. 
-
-
-6. Dry-run preview (if high autonomy / RB-prox). E generates a no-side-effect plan preview and requests H pre-approval.
-
-
-7. Contracted dispatch. TG nodes are bound into MCP contracts and delegated to agents with explicit ceilings. 
-
-
-8. Execution + telemetry. Agents execute, returning outputs, confidence, realized cost, and safety signals. 
-
-
-9. Metrics + lineage. E updates SI/HSS/SCP, commits an immutable lineage hash, and reports evidence to governance.
