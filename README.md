@@ -1,15 +1,15 @@
-# symbiosis
-Engineering standard for safe, economic, governable hybrid intelligence
 # Symbiosis Framework v0.9 — 20 November 2025
 
 The engineering standard for safe, economic, and governable hybrid intelligence.
 
-**Full 321-page specification coming in the next 48 hours.**
+**Download** → [symbiosis-framework-v0.9-2025-11-20.pdf](https://github.com/harvirr/symbiosis/releases/download/v0.9/symbiosis-framework-v0.9-2025-11-20.pdf)
 
-In the meantime:
+**Key Artifacts**  
+• Canonical Ontology → [diagrams/ontology.svg](diagrams/ontology.svg) *(coming hours)*  
+• Operational Trace → [diagrams/operational-trace.svg](diagrams/operational-trace.svg) *(coming hours)*  
+• Reference Implementation → [ref-impl/engine.py](ref-impl/engine.py) *(coming hours)*  
 
-- Canonical Ontology → [diagrams/ontology.svg](diagrams/ontology.svg) (coming)
-- Operational Trace → [diagrams/operational-trace.svg](diagrams/operational-trace.svg) (coming)
-- Reference Implementation → [ref-impl/engine.py](ref-impl/engine.py) (coming)
+327 pages · 10-step normative engine · conformance tiers · contract schema v1  
+Apache 2.0 — fork, implement, certify.
 
-Apache 2.0 — watch this repo.
+This is the Kubernetes of human–AI coordination.
